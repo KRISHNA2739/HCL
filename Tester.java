@@ -25,8 +25,13 @@ public class Tester implements BookDao
 
 	@Override
 	public Book upBook(int id, int page) {
-		Bookmap.put(id, new Book(id, "java", page, "raj"));
-		return Bookmap.get(id);
+		if(Bookmap.get(id) != null)
+		{
+			Bookmap.get(id).setPages(page);
+			return Bookmap.get(id);
+		}
+		
+		return null;
 	}
 
 	@Override
