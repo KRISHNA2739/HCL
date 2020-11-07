@@ -48,8 +48,8 @@ public class CustomerController {
 		
 	
 	Customer customer3=new Customer("kaj", "988523", "kaj@gmail.com", new Date(), 150);
-//	dao.addCustomer(customer3);
-//		System.out.println("---------------");
+	dao.addCustomer(customer3);
+
 	}
 	
 
