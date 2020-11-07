@@ -2,44 +2,31 @@ package customerdetails.model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream.GetField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-
 public class ConnectionFactory {
-	
-	private static Connection conn;
-	private ConnectionFactory() {}
-	
-	public static Connection getConnection() {
-		InputStream is = ConnectionFactory.class
-							.getClassLoader()
-							.getResourceAsStream("C:\\Users\\hp\\eclipse-workspace\\customerdetails\\src\\db1.properties");
+	private static Connection connection=null;
+	private ConnectionFactory()
+	{
 		
-		Properties properties = new Properties();
-		try {
-			properties.load(is);
-		} catch (IOException e) {
-		
-			e.printStackTrace();
-		}
-		
-		String driver = properties.getProperty("db.driver");
-		String url = properties.getProperty("db.url");
-		String username = properties.getProperty("db.username");
-		String password = properties.getProperty("db.password");
-		
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			conn = DriverManager.getConnection(url, username, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return conn;
 	}
+	public static Connection GetConnection()
+	{
+		
+		String dbUrl = "jdbc:mysql://localhost:3306/krishna";
+		String user = "client";		
+		String pass = "client";
+		
+			try {
+				connection = DriverManager.getConnection(dbUrl, user, pass);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return connection;
+	}
+
 }

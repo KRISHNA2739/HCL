@@ -13,9 +13,9 @@ import java.util.*;
 public class CustomerController {
 	public static void main(String[] args) {
 		
-		Connection connection=ConnectionFactory.getConnection();
+		Connection connection=ConnectionFactory.GetConnection();
 		if(connection!=null)
-			System.out.println("sucess");
+			System.out.println("success");
 		
 		
 	
@@ -35,8 +35,8 @@ public class CustomerController {
 		dao.updateCustomerPurchaseCapacity(2,500);
 		System.out.println("updated.....");
 		
-		
-		
+	
+	
 		
 		Customer customer1=dao.getSelectedCustomerByid(2).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
 	System.out.println(customer1);
@@ -48,8 +48,8 @@ public class CustomerController {
 		
 	
 	Customer customer3=new Customer("kaj", "988523", "kaj@gmail.com", new Date(), 150);
-	dao.addCustomer(customer3);
-		
+//	dao.addCustomer(customer3);
+//		System.out.println("---------------");
 	}
 	
 

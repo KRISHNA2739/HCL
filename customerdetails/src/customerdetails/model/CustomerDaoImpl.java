@@ -16,7 +16,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	private Connection connection;
 
 	public CustomerDaoImpl() {
-		connection = ConnectionFactory.getConnection();
+		connection = ConnectionFactory.GetConnection();
 	}
 
 	@Override
