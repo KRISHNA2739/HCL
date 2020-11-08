@@ -29,7 +29,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			PreparedStatement pstmt = connection
 					.prepareStatement
-					("insert into books(name, phoneno, email, birthdate, purchaseCapacity) values (?,?,?,?,?)");
+					("insert into customer(name, phoneno, email, birthdate, purchaseCapacity) values (?,?,?,?,?)");
 			pstmt.setString(1, customer.getName());
 			pstmt.setString(2, customer.getPhoneno());
 			pstmt.setString(3, customer.getEmail());
