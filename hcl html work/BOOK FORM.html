@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ <html lang="en" class="no-js"> 
+    <head>
+        <meta charset="UTF-8" />
+        <title>RAJ BOOKSTORE</title>
+
+<style>
+			body
+				{
+					background-image: url('img/eiffel_bg.jpg');
+					background-attachment: fixed;
+					background-size: 100% 100%;
+				}
+				table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+}
+		</style>
+    </head>
+    <body>
+		
+				
+				<form  method="post" autocomplete="on">
+                          		  <table class="center">	
+                                <tr><td><h2>BOOK DETAILS</h2></td></tr>
+									
+                               <tr>								
+                                <td> BOOK NAME:  </td> <td><input  name="bookname" type="text" placeholder="Book Title" required  autofocus > <br><br> </td>
+								</tr>
+								<tr>
+								  <td> BOOK ISBN: </td><td><input    name="bookisbn" required="required" type="text" placeholder="Book ISBN"/><br><br></td>
+								   </tr>
+								   <tr>
+                                    <td>BOOK COPIES: </td><td><input   name="bookcopies" required="required" type="number" placeholder="Book Copies"/><br><br></tr></td>
+									<tr>
+                                   <td>BOOK PUBLISHED DATE: </td><td><input  name="pubdate" type="datetime-local" placeholder="Book Published Date" required > <br><br></tr></td>
+								   <tr>
+									 <td>BOOK PRICE: </td><td><input  name="bookprice" type="text" placeholder="Book Price" required ><br><br></tr></td>
+									 <tr>
+                                    <td>PUBLISHER NAME: </td><td><input    name="Publishername" required="required" type="text" placeholder="Publisher Name"/><br><br></tr></td>
+									<tr>
+									 <td>PUBLISHER ADDRESS: </td><td><input    name="Publisheraddress" required="required" type="text" placeholder="Publisher Address"/><br><br></tr></td>
+                                    <tr>								
+                                     <td>AUTHOR NAME: </td><td><input  class="name"  name="Authorname" required="required" type="text" placeholder="Author Name"/><br><br></tr></td>
+									 <tr>
+									 <td>AUTHOR ADDRESS: </td><td><input  class="name"  name="Authoraddress" required="required" type="text" placeholder="Author Address"/><br><br></tr></td>
+                                    </p>
+							
+							
+								<tr>
+								<td><select id="booktype"  name="Book Type" required >
+								         <option>Classics</option>
+										<option>Action and Adventure</option>
+										<option>Fantasy</option>
+										<option>Horror</option>
+										<option>technical</option>
+								</select>
+								</td>
+                             
+           					<td><button class="btn-signup" type="submit" name="signup" onclick="signup()">SUBMIT</button><br><br></td>
+							</tr>
+							</table>	
+
+                            </form>
+							<br><br><br><br><br>
+				
+				
+				
+				
+			
+             
+				
+                
+							
+         			<footer>All Rights Reserved RAJ BOOKHUB | Copyright &copy; 2020</footer>
+
+        
+    </body>
+	
+</html>
