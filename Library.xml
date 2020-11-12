@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Library SYSTEM "Library.dtd" >
+<tns:Library xmlns:tns="http://www.example.org/Library" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Library Library.xsd ">
+  <LibraryDetails>
+    <LibraryName>LibraryName</LibraryName>
+    <LibraryLocation>LibraryLocation</LibraryLocation>
+    <LibraryType>LibraryType</LibraryType>
+    <LibraryPhoneno>LibraryPhoneno</LibraryPhoneno>
+  </LibraryDetails>
+  <Books>
+    <BookName>BookName</BookName>
+    <BookAuthorName>BookAuthorName</BookAuthorName>
+    <BookISBN>BookISBN</BookISBN>
+    <Bookprice>0.0</Bookprice>
+    <BookPublishingDate>2001-01-01</BookPublishingDate>
+  </Books>
+</tns:Library>

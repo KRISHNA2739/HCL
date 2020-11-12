@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Library" xmlns:tns="http://www.example.org/Library" elementFormDefault="unqualified">
+
+    <element name="Library" type="tns:Librarytype"></element>
+    
+    <complexType name="Librarytype">
+    	<sequence>
+    		<element name="LibraryDetails" type="tns:LibraryDetails"
+    			maxOccurs="1" minOccurs="1">
+    		</element>
+    		<element name="Books" type="tns:Book" maxOccurs="unbounded"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LibraryDetails">
+    	<sequence>
+    		<element name="LibraryName" type="string"></element>
+    		<element name="LibraryLocation" type="string"></element>
+    		<element name="LibraryType" type="string"></element>
+    		<element name="LibraryPhoneno" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Book">
+    	<sequence>
+    		<element name="BookName" type="string"></element>
+    		<element name="BookAuthorName" type="string"></element>
+    		<element name="BookISBN" type="string"></element>
+    		<element name="Bookprice" type="double"></element>
+    		<element name="BookPublishingDate" type="date"></element>
+    	</sequence>
+    </complexType>
+</schema>

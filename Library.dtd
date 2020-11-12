@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Library (LibraryDetails,Books)*>
+<!ELEMENT LibraryDetails (LibraryName,LibraryLocation,LibraryType,LibraryPhoneno)>
+<!ELEMENT LibraryName (#PCDATA)*>
+<!ELEMENT LibraryLocation (#PCDATA)*>
+<!ELEMENT LibraryType (#PCDATA)*>
+<!ELEMENT LibraryPhoneno (#PCDATA)*>
+<!ELEMENT Books (BookName,BookAuthorName,BookISBN,Bookprice,BookPublishingDate)*>
+<!ELEMENT BookName (#PCDATA)*>
+<!ELEMENT BookAuthorName (#PCDATA)*>
+<!ELEMENT BookISBN (#PCDATA)*>
+<!ELEMENT Bookprice (#PCDATA)*>
+<!ELEMENT BookPublishingDate (#PCDATA)*>
+
