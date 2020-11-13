@@ -22,6 +22,8 @@ footer {
   color: white;
 }
 		</style>
+		<script src='function.js'>
+		</script>
     </head>
     <body>
 		
@@ -37,11 +39,11 @@ footer {
 								  <td> BOOK ISBN: </td><td><input    name="bookisbn" required="required" type="text" placeholder="Book ISBN"/><br><br></td>
 								   </tr>
 								   <tr>
-                                    <td>BOOK COPIES: </td><td><input   name="bookcopies" required="required" type="number" placeholder="Book Copies"/><br><br></tr></td>
+                                    <td>BOOK COPIES: </td><td><input   name="bookcopies" id ="copies" required="required" type="number" placeholder="Book Copies"/><br><br></tr></td>
 									<tr>
                                    <td>BOOK PUBLISHED DATE: </td><td><input  name="pubdate" type="datetime-local" placeholder="Book Published Date" required > <br><br></tr></td>
 								   <tr>
-									 <td>BOOK PRICE: </td><td><input  name="bookprice" type="text" placeholder="Book Price" required ><br><br></tr></td>
+									 <td>BOOK PRICE: </td><td><input  name="bookprice"  id ="price" type="text" placeholder="Book Price" required ><br><br></tr></td>
 									 <tr>
                                     <td>PUBLISHER NAME: </td><td><input    name="Publishername" required="required" type="text" placeholder="Publisher Name"/><br><br></tr></td>
 									<tr>
@@ -63,7 +65,7 @@ footer {
 								</select>
 								</td>
                              
-           					<td><button  type="submit" >SUBMIT</button><br><br></td>
+           					<td><button type="submit" onclick="return valid();">SUBMIT</button><br><br></td>
 							</tr>
 							</table>	
 
