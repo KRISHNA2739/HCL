@@ -46,7 +46,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public void delCustomer(int id) {
 		Customer customer=getSelectedCustomerByid(id).orElseThrow
-				(()-> new CustomerNotFoundException("book with id:"+ id+" is not fund"));
+				(()-> new CustomerNotFoundException("customer with id:"+ id+" is not fund"));
 	
 		try {
 			PreparedStatement pstmt = connection
@@ -63,11 +63,11 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public void updateCustomerPurchaseCapacity(int id, int purchaseCapacity) {
 		Customer customer=getSelectedCustomerByid(id).orElseThrow
-				(()-> new CustomerNotFoundException("book with id:"+ id+" is not fund"));
+				(()-> new CustomerNotFoundException("customer with id:"+ id+" is not fund"));
 	
 		try {
 			PreparedStatement pstmt = connection
-					.prepareStatement("update customer set purchaseCapacity=? where id=?");
+					.prepareStatement("update  set purchaseCapacity=? where id=?");
 			pstmt.setInt(1, purchaseCapacity);
 			pstmt.setInt(2,id);
 			pstmt.executeUpdate();
