@@ -25,6 +25,9 @@ public class HclSite extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {	
 		sitename=config.getInitParameter("sitename");
+		String dbUrl = "jdbc:mysql://localhost:3306/krishna";
+		 String user = "client";		
+		 String pass = "client";
 		
 		 
 		try
