@@ -18,9 +18,7 @@ public class HclSite extends HttpServlet {
 	private Connection myConn = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	String dbUrl = "jdbc:mysql://localhost:3306/krishna";
-	 String user = "client";		
-	 String pass = "client";
+	
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {	
