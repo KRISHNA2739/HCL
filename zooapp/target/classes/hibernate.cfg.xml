@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- database connection setting -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/krishna</property>
+		<property name="connection.username">client</property>
+		<property name="connection.password">client</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+		<!-- disable the second level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="show_sql">true</property>
+
+		<property name="format_sql">true</property>
+		
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		
+		<!-- jdbc connection pool build in  -->
+		<property name="connection.pool_size">1</property>
+		<!-- <property name="current_session_context_class">thread</property> -->
+		<mapping class="com.zooapp.Staff" />
+		<mapping class="com.zooapp.Cage" />
+		<mapping class="com.zooapp.Category" />
+		<mapping class="com.zooapp.Emergency" />
+		<mapping class="com.zooapp.Supplier" />
+		<mapping class="com.zooapp.Vet" />
+		<mapping class="com.zooapp.InHouseVet" />
+		<mapping class="com.zooapp.ExternalVet" />
+		<mapping class="com.zooapp.Animal" />
+		<mapping class="com.zooapp.FoodItem" />
+		
+		
+	</session-factory>
+</hibernate-configuration>
