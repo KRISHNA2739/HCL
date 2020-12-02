@@ -20,42 +20,46 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-
-
 @Entity
 @Table(name = "transaction_table")
 public class TransactionEntry {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer txId;
-	private Integer fromaccountId;
-	private Integer toaccountId;
-	
-    private String txInfo;
-    
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
-    
-    private Double amount;
-    
-    @Enumerated(EnumType.STRING)
-    private TxType txType;
-    
-   
-    
-	
+	@JoinColumn(name = "from_account_Id_fk")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Account fromaccountId;
+	@JoinColumn(name = "to_account_Id_fk")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Account toaccountId;
+
+	private String txInfo;
+
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date timestamp;
+
+	private Double amount;
+
+	@Enumerated(EnumType.STRING)
+	private TxType txType;
+
 	public TransactionEntry() {
-		
+
 	}
-	
-	
+
+	public Account getFromaccountId() {
+		return fromaccountId;
+	}
+
+	public void setFromaccountId(Account fromaccountId) {
+		this.fromaccountId = fromaccountId;
+	}
 
 	
 
-
-	public TransactionEntry(Integer fromaccountId, Integer toaccountId, String txInfo, Date timestamp, Double amount,
+	public TransactionEntry(Account fromaccountId, Account toaccountId, String txInfo, Date timestamp, Double amount,
 			TxType txType) {
 		
 		this.fromaccountId = fromaccountId;
@@ -68,22 +72,11 @@ public class TransactionEntry {
 
 
 
-
-
-
-	public Integer getFromaccountId() {
-		return fromaccountId;
-	}
-
-	public void setFromaccountId(Integer fromaccountId) {
-		this.fromaccountId = fromaccountId;
-	}
-
-	public Integer getToaccountId() {
+	public Account getToaccountId() {
 		return toaccountId;
 	}
 
-	public void setToaccountId(Integer toaccountId) {
+	public void setToaccountId(Account toaccountId) {
 		this.toaccountId = toaccountId;
 	}
 
@@ -119,7 +112,6 @@ public class TransactionEntry {
 		this.amount = amount;
 	}
 
-	
 	public TxType getTxType() {
 		return txType;
 	}
@@ -127,11 +119,6 @@ public class TransactionEntry {
 	public void setTxType(TxType txType) {
 		this.txType = txType;
 	}
-
-
-
-
-
 
 	@Override
 	public String toString() {
@@ -153,6 +140,9 @@ public class TransactionEntry {
 		builder.append("]");
 		return builder.toString();
 	}
+
 	
+
 	
+
 }

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bankapp.model.dao.Account;
 import com.bankapp.model.dao.AccountDao;
 import com.bankapp.model.dao.TransactionEntry;
 import com.bankapp.model.dao.TransactionEntryDao;
@@ -26,7 +27,7 @@ public class TransactionEntryServiceImpl implements TransactionEntryService{
 	}
 
 	@Override
-	public void addTransaction(Integer fromaccountId,Integer toaccountId,String txInfo, Double amount, TxType txType) {
+	public void addTransaction(Account fromaccountId,Account toaccountId,String txInfo, Double amount, TxType txType) {
 		transactionEntryDao.addTransaction(fromaccountId,toaccountId,txInfo, amount, txType);
 	}
 

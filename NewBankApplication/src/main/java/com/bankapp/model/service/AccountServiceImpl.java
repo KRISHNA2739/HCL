@@ -59,7 +59,7 @@ public class AccountServiceImpl implements AccountService {
 		Account account = accountdao.getAccountById(accountId);
 		account.setBalance(account.getBalance() + amount);
 		accountdao.updateAccount(account);
-		transactionentryservice.addTransaction(accountId,accountId," deposit in "+ accountId, amount, TxType.DEPOSIT);
+		transactionentryservice.addTransaction(account,account," deposit in "+ accountId, amount, TxType.DEPOSIT);
 		
 
 	}
@@ -69,7 +69,7 @@ public class AccountServiceImpl implements AccountService {
 		Account account = accountdao.getAccountById(accountId);
 		account.setBalance(account.getBalance() - amount);
 		accountdao.updateAccount(account);
-		transactionentryservice.addTransaction(accountId,accountId," withdraw from "+ accountId, amount, TxType.WITHDRAW);
+		transactionentryservice.addTransaction(account,account," withdraw from "+ accountId, amount, TxType.WITHDRAW);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class AccountServiceImpl implements AccountService {
 		Account account = accountdao.getAccountById(toaccountId);
 		account.setBalance(account.getBalance() + amount);
 		accountdao.updateAccount(account);
-		transactionentryservice.addTransaction(fromaccountId,toaccountId," withdraw from "+ fromaccountId+" deposit in "+ toaccountId, amount, TxType.TRANSFER);
+		transactionentryservice.addTransaction(account1,account," withdraw from "+ fromaccountId+" deposit in "+ toaccountId, amount, TxType.TRANSFER);
 	}
 
 }

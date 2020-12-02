@@ -26,7 +26,7 @@ public class TransactionEntryDaoImpl implements TransactionEntryDao{
 	}
 	
 	@Override
-	public void addTransaction(Integer fromaccountId,Integer toaccountId,String txInfo, Double amount, TxType txType){
+	public void addTransaction(Account fromaccountId,Account toaccountId,String txInfo, Double amount, TxType txType){
 		TransactionEntry transactionEntry = new TransactionEntry(fromaccountId,toaccountId,txInfo,new Date(), amount, txType);
 		getSession().persist(transactionEntry);
 		

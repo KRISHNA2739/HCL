@@ -56,8 +56,8 @@ tr:nth-child(even) {
 				<tr>
 					
 					<td>${transaction.txId}</td>
-					<td>${transaction.fromaccountId}</td>
-					<td>${transaction.toaccountId}</td>
+					<td>${transaction.fromaccountId.accountId}</td>
+					<td>${transaction.toaccountId.accountId}</td>
 					<td>${transaction.txInfo}</td>
 
 					<td><fmt:formatDate pattern="dd/MM/yyyy"

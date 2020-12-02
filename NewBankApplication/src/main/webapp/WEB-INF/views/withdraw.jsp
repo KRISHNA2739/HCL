@@ -21,7 +21,7 @@
 			</tr>
 			
 			<tr>
-				<td>Enter amount to be transferred:</td>
+				<td>Enter amount to be withdraw:</td>
 				<td><input type="text" name="amount"></td>
 			</tr>
 			

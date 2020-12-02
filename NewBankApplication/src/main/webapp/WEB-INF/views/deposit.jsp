@@ -13,7 +13,7 @@
 <body>
 
 <h3>Welcome</h3>
-	<form:form action="withdraw" method="post" modelAttribute="depositBean">
+	<form:form action="deposit" method="post" modelAttribute="depositBean">
 		<table>
 			
 			<tr>
@@ -22,7 +22,7 @@
 			</tr>
 			
 			<tr>
-				<td>Enter amount to be transferred:</td>
+				<td>Enter amount to be deposit:</td>
 				<td><input type="text" name="amount"></td>
 			</tr>
 			
