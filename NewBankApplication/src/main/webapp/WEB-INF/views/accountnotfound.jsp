@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>page you have request not found!</h3>
+${error }<br>
 Please visit home page <a href="accountdetails">account</a>
 </body>
 </html>

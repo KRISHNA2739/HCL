@@ -22,6 +22,7 @@ import com.bankapp.model.service.AccountService;
 import com.bankapp.web.formbeans.TransferBean;
 import com.bankapp.web.formbeans.WithdrawBean;
 
+
 @Controller
 public class AccountController {
 	
@@ -132,6 +133,14 @@ public class AccountController {
 	public AccountType[] accountType() {
 		
 		return AccountType.values();
+	}
+	@ExceptionHandler(com.bankapp.model.dao.AccountNotFoundException.class)
+	public ModelAndView AccountNotFoundException (Exception ex, HttpServletRequest req) {
+		System.out.println("------------%%%%%%%%%%%%%----------");
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("accountnotfound");
+		mv.addObject("error", ex.getMessage());
+		return mv;
 	}
 
 }
