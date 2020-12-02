@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,6 +39,15 @@ public class TransactionController {
     	mvv.addObject("user", req.getSession(false).getAttribute("user"));
 		return mvv;
 	}
+	
+	@GetMapping("transaction/{id}")
+	public ModelAndView transactionGet(@PathVariable("id") int fromaccountId,HttpServletRequest req,ModelAndView mvv) {
+		mvv.setViewName("transactions");
+		mvv.addObject("transactions", transactionentryservice.getTransactionsById(fromaccountId));
+    	mvv.addObject("user", req.getSession(false).getAttribute("user"));
+		return mvv;
+	}
+	
 	
 	
 

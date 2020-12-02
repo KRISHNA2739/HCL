@@ -60,7 +60,7 @@ tr:nth-child(even) {
 					<td>${transaction.toaccountId.accountId}</td>
 					<td>${transaction.txInfo}</td>
 
-					<td><fmt:formatDate pattern="dd/MM/yyyy"
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
 							value="${transaction.timestamp}" /></td>
 					<td>${transaction.amount}</td>
 					<td>${transaction.txType}</td>

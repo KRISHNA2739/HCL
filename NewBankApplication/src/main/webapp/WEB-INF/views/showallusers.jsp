@@ -39,37 +39,24 @@ tr:nth-child(even) {
 	<table>
 		<thead>
 			<tr>
-				<th>accountId</th>
-				<th>name</th>
-				<th>balance</th>
-				<th>address</th>
-				<th>phone</th>
-				<th>email</th>
-				<th>aadharCard</th>
-				<th>birthDate</th>
-				<th>panNumber</th>
-				<th>accountType</th>
+				<th>id</th>
+				<th>username</th>
+				<th>password</th>
+				<th>userType</th>
 				<th>update</th>
 				<th>delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${accounts}" var="account">
+			<c:forEach items="${users}" var="userr">
 				<tr>
-					<td>${account.accountId}</td>
-					<td>${account.name}</td>
-					<td>${account.balance}</td>
-					<td>${account.address}</td>
-					<td>${account.phone}</td>
-					<td>${account.email}</td>
-					<td>${account.aadharCard}</td>
-					<td><fmt:formatDate pattern="dd/MM/yyyy"
-							value="${account.birthDate}" /></td>
-					<td>${account.panNumber}</td>
-					<td>${account.accountType}</td>
+					<td>${userr.id}</td>
+					<td>${userr.username}</td>
+					<td>${userr.password}</td>
+					<td>${userr.userType}</td>
 					<c:if test="${user.userType == 'ADMIN'}">
-						<td><a href="updateaccount?accountId=${account.accountId}">update account</a></td>
-						<td><a href="deleteaccount?accountId=${account.accountId}">delete account</a></td>
+						<td><a href="updateuser?id=${userr.id}">update user</a></td>
+						<td><a href="deleteuser?id=${userr.id}">delete user</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
@@ -83,6 +70,7 @@ tr:nth-child(even) {
 		<a href="updateuser">update user</a>
 		<a href="home">transfer</a>
 		<a href="transactions">transactions</a>
+		<a href="accountdetails">account details</a>
 	</c:if>
 </body>
 </html>

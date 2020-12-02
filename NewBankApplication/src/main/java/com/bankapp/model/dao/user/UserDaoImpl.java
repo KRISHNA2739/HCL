@@ -13,6 +13,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bankapp.model.dao.Account;
+
 
 
 @Repository
@@ -45,6 +47,32 @@ public class UserDaoImpl implements UserDao {
 		query.setParameter("password", password);
 
 		return (User) query.uniqueResult();
+	}
+
+	@Override
+	public User updateUser(int accountId, User user) {
+		User usertobeupdated=getUser(accountId);
+		usertobeupdated.setUserType(user.getUserType());
+		return usertobeupdated;
+	}
+
+	@Override
+	public User getUser(int accountId) {
+		User user=getSession().get(User.class, accountId);
+		return user;
+	}
+
+	@Override
+	public List<User> getallUser() {
+		
+		return getSession().createQuery("from User").getResultList();
+	}
+
+	@Override
+	public User deleteUser(int accountId) {
+		User userToBeDeleted =getSession().get(User.class, accountId);
+		getSession().delete(userToBeDeleted);
+		return userToBeDeleted;
 	}
 
 }

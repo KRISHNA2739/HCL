@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bankapp.model.dao.user.User;
 import com.bankapp.model.dao.user.UserType;
@@ -56,13 +57,17 @@ public class UserController {
 			if (userservice.getUser(username, password) != null) {
 				HttpSession httpSession = req.getSession(false);
 				httpSession.setAttribute("user", userservice.getUser(username, password));
-               if(userservice.getUser(username, password).getUserType()==UserType.ADMIN)
-				return "redirect:/accountdetails";
-               else
-            	   return "redirect:/accountdetail";
+            	   return "redirect:/userdetails";
 			} else
 				return "redirect:/loginuser";
 		}
+	}
+	@GetMapping("userdetails")
+	public ModelAndView allusers(HttpServletRequest req,ModelAndView mv) {
+		mv.setViewName("showallusers");
+		mv.addObject("users", userservice.getallUser());
+    	mv.addObject("user", req.getSession(false).getAttribute("user"));
+		return mv;
 	}
 
 	@GetMapping("logout")
@@ -82,6 +87,19 @@ public class UserController {
 		map.addAttribute("user", new User());
 		return "adduser";
 	}
+	@GetMapping("updateuser")
+	public String updateuser(HttpServletRequest req, ModelMap map) {
+		int accountId=Integer.parseInt(req.getParameter("id"));
+		User user = userservice.getUser(accountId);
+		map.addAttribute("user", user);
+		return "updateuser";
+	}
+	@GetMapping("deleteuser")
+	public String deleteuser(HttpServletRequest req) {
+		int accountId=Integer.parseInt(req.getParameter("id"));
+		userservice.deleteUser(accountId);
+		return "redirect:/userdetails";
+	}
 
 	@PostMapping("adduser")
 	public String adduserPost(@Valid @ModelAttribute(name = "user") User user, BindingResult bindingResult) {
@@ -89,9 +107,15 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			return "adduser";
 		} else {
+			if(user.getId()==0)
+			{
 			userservice.addUser(user);
+			}else
+			{
+				userservice.updateUser(user.getId(), user);
+			}
 
-			return "redirect:/accountdetails";
+			return "redirect:/userdetails";
 		}
 	}
 
