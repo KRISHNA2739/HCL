@@ -15,43 +15,27 @@ import javax.servlet.http.HttpSession;
 
 import com.bankapp.model.dao.user.User;
 
-
-
-@WebFilter(urlPatterns= "*.do")
-public class LoginCheckerFilter implements Filter {
+@WebFilter(urlPatterns = "/*")
+public class cacheFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
 
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req=(HttpServletRequest) request;
-		HttpServletResponse res=(HttpServletResponse) response;
-	
-		boolean isValid=false;
-		
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
+		res.setHeader("Cache-Control", "no-cache, no-store");
+		res.setHeader("Pragma", "no-cache");
+		res.setDateHeader("Expires", 0);
 
-		HttpSession httpSession=req.getSession(false);
-		
-		if(httpSession!=null){
-			User user=(User) httpSession.getAttribute("user");
-			if(user!=null){
-				isValid=true;
-			}
-		}
-		
-		
-		if(isValid){
 		chain.doFilter(request, response);
-		}else{
-			
-			res.sendRedirect("/NewBankApp/loginuser");
-			return ;
-		}
 	}
 
+	@Override
 	public void destroy() {
-		
+
 	}
 
 }
