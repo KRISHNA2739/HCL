@@ -13,7 +13,7 @@
 <body>
 
 <h3>Welcome</h3>
-	<form:form action="deposit" method="post" modelAttribute="depositBean">
+	<form:form action="deposit.do" method="post" modelAttribute="depositBean">
 		<table>
 			
 			<tr>

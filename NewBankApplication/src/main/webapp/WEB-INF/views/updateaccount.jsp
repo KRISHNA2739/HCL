@@ -8,7 +8,7 @@
 <title>Update account</title>
 </head>
 <body>
-<form:form action="addaccount" method="post" modelAttribute="account">
+<form:form action="addaccount.do" method="post" modelAttribute="account">
 	<form:hidden path="accountId"/>
 	<table>
 		<tr>

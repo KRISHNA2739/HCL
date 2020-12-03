@@ -32,7 +32,7 @@ public class TransactionController {
 	}
 
 	
-	@GetMapping("transactions")
+	@GetMapping("transactions.do")
 	public ModelAndView transactionsGet(HttpServletRequest req,ModelAndView mvv) {
 		mvv.setViewName("transactions");
 		mvv.addObject("transactions", transactionentryservice.getallTransactions());
@@ -40,7 +40,7 @@ public class TransactionController {
 		return mvv;
 	}
 	
-	@GetMapping("transaction/{id}")
+	@GetMapping("transaction.do/{id}")
 	public ModelAndView transactionGet(@PathVariable("id") int fromaccountId,HttpServletRequest req,ModelAndView mvv) {
 		mvv.setViewName("transactions");
 		mvv.addObject("transactions", transactionentryservice.getTransactionsById(fromaccountId));

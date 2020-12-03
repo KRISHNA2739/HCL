@@ -8,9 +8,9 @@
 </head>
 <body>
 <br>
-<a href="transfer"> Transfer </a> <br>
-<a href="withdraw"> Withdraw </a> <br>
-<a href="deposit"> Deposit </a> <br>
-<a href="accountdetails">MAIN HOME</a>
+<a href="transfer.do"> Transfer </a> <br>
+<a href="withdraw.do"> Withdraw </a> <br>
+<a href="deposit.do"> Deposit </a> <br>
+<a href="accountdetails.do">MAIN HOME</a>
 </body>
 </html>

@@ -33,13 +33,13 @@ public class AccountController {
 	public AccountController(AccountService accountService) {
 		this.accountService = accountService;
 	}
-	@GetMapping("home")
+	@GetMapping("home.do")
 	public String home() {
 		return "home";
 	}
 
 
-	@GetMapping("accountdetails")
+	@GetMapping("accountdetails.do")
 	public ModelAndView allaccounts(HttpServletRequest req,ModelAndView mv) {
 		mv.setViewName("showall");
 		mv.addObject("accounts", accountService.getAllAccounts());
@@ -48,14 +48,14 @@ public class AccountController {
 	}
 	
 
-	@GetMapping("deleteaccount")
+	@GetMapping("deleteaccount.do")
 	public String delaccount(HttpServletRequest req) {
 		int accountId=Integer.parseInt(req.getParameter("accountId"));
 		accountService.deleteAccount(accountId);
-		return "redirect:/accountdetails";
+		return "redirect:/accountdetails.do";
 	}
 
-	@GetMapping("updateaccount")
+	@GetMapping("updateaccount.do")
 	public String updateaccount(HttpServletRequest req, ModelMap map) {
 		int accountId=Integer.parseInt(req.getParameter("accountId"));
 		Account account = accountService.getAccountById(accountId);
@@ -63,60 +63,60 @@ public class AccountController {
 		return "updateaccount";
 	}
 	
-	@GetMapping("transfer")
+	@GetMapping("transfer.do")
 	public String transferGet(ModelMap map) {
 		map.addAttribute("transferBean", new TransferBean());
 		return "transfer";
 	}
 	
-	@PostMapping("transfer") 
+	@PostMapping("transfer.do") 
 	public String transferPost(@ModelAttribute("transferBean") TransferBean transferBean) {
 		int fromAccountId = transferBean.getFromAccountId();
 		int toAccountId = transferBean.getToAccountId();
 		Double amount = transferBean.getAmount();
 		accountService.transfer(fromAccountId, toAccountId, amount);
-		return "redirect:/accountdetails";
+		return "redirect:/accountdetails.do";
 	}
 	
-	@GetMapping("withdraw")
+	@GetMapping("withdraw.do")
 	public String withdrawGet(ModelMap map) {
 		map.addAttribute("withdrawBean", new WithdrawBean());
 		return "withdraw";
 	}
 	
-	@PostMapping("withdraw") 
+	@PostMapping("withdraw.do") 
 	public String withdrawPost(@ModelAttribute("withdrawBean") WithdrawBean withdrawBean) {
 		int accountId = withdrawBean.getAccountId();
 		Double amount = withdrawBean.getAmount();
 		accountService.withdraw(accountId, amount);
-		return "redirect:/accountdetails";
+		return "redirect:/accountdetails.do";
 	}
 	
-	@GetMapping("deposit")
+	@GetMapping("deposit.do")
 	public String depositGet(ModelMap map) {
 		map.addAttribute("depositBean", new WithdrawBean());
 		return "deposit";
 	}
 	
-	@PostMapping("deposit") 
+	@PostMapping("deposit.do") 
 	public String depositPost(@ModelAttribute("depositBean") WithdrawBean withdrawBean) {
 		int accountId = withdrawBean.getAccountId();
 		Double amount = withdrawBean.getAmount();
 		accountService.deposit(accountId, amount);
-		return "redirect:/accountdetails";
+		return "redirect:/accountdetails.do";
 	}
 
 
-	@GetMapping("addaccount")
+	@GetMapping("addaccount.do")
 	public String addBookGet(ModelMap map) {
 		
 		map.addAttribute("account", new Account());
 	return "addaccount";
 	}
 
-	@PostMapping("addaccount")
+	@PostMapping("addaccount.do")
 	public String addaccountPost(@Valid @ModelAttribute(name = "account") Account account, BindingResult bindingResult) {
-		// hey spring if there is a validation error : go back to addbook.jsp
+		
 		if (bindingResult.hasErrors()) {
 			return "addaccount";
 		} else {
@@ -125,7 +125,7 @@ public class AccountController {
 			} else {
 				accountService.updateAccount(account.getAccountId(),account);
 		}
-			return "redirect:/accountdetails";
+			return "redirect:/accountdetails.do";
 		}
 	}
 
@@ -136,7 +136,7 @@ public class AccountController {
 	}
 	@ExceptionHandler(com.bankapp.model.dao.AccountNotFoundException.class)
 	public ModelAndView AccountNotFoundException (Exception ex, HttpServletRequest req) {
-		System.out.println("------------%%%%%%%%%%%%%----------");
+	
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("accountnotfound");
 		mv.addObject("error", ex.getMessage());

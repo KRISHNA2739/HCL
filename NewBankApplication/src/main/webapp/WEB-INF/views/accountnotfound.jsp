@@ -8,6 +8,6 @@
 </head>
 <body>
 ${error }<br>
-Please visit home page <a href="accountdetails">account</a>
+Please visit home page <a href="accountdetails.do">account</a>
 </body>
 </html>

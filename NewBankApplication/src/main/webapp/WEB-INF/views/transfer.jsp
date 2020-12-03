@@ -10,7 +10,7 @@
 </head>
 <body>
 <h3>Welcome</h3>
-	<form:form action="transfer" method="post" modelAttribute="transferBean">
+	<form:form action="transfer.do" method="post" modelAttribute="transferBean">
 		<table>
 			<tr>
 				<td>Enter to account number:</td>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <h3>Welcome</h3>
-	<form:form action="withdraw" method="post" modelAttribute="withdrawBean">
+	<form:form action="withdraw.do" method="post" modelAttribute="withdrawBean">
 		<table>
 			
 			<tr>

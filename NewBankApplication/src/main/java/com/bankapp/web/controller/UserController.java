@@ -57,12 +57,12 @@ public class UserController {
 			if (userservice.getUser(username, password) != null) {
 				HttpSession httpSession = req.getSession(false);
 				httpSession.setAttribute("user", userservice.getUser(username, password));
-            	   return "redirect:/userdetails";
+            	   return "redirect:/userdetails.do";
 			} else
 				return "redirect:/loginuser";
 		}
 	}
-	@GetMapping("userdetails")
+	@GetMapping("userdetails.do")
 	public ModelAndView allusers(HttpServletRequest req,ModelAndView mv) {
 		mv.setViewName("showallusers");
 		mv.addObject("users", userservice.getallUser());
@@ -80,28 +80,28 @@ public class UserController {
 
 	}
 
-	@GetMapping("adduser")
+	@GetMapping("adduser.do")
 	public String adduserGet(ModelMap map) {
 		// we are binding a form bean ( a poj ie used to collect the data from ui) with
 		// the form
 		map.addAttribute("user", new User());
 		return "adduser";
 	}
-	@GetMapping("updateuser")
+	@GetMapping("updateuser.do")
 	public String updateuser(HttpServletRequest req, ModelMap map) {
 		int accountId=Integer.parseInt(req.getParameter("id"));
 		User user = userservice.getUser(accountId);
 		map.addAttribute("user", user);
 		return "updateuser";
 	}
-	@GetMapping("deleteuser")
+	@GetMapping("deleteuser.do")
 	public String deleteuser(HttpServletRequest req) {
 		int accountId=Integer.parseInt(req.getParameter("id"));
 		userservice.deleteUser(accountId);
-		return "redirect:/userdetails";
+		return "redirect:/userdetails.do";
 	}
 
-	@PostMapping("adduser")
+	@PostMapping("adduser.do")
 	public String adduserPost(@Valid @ModelAttribute(name = "user") User user, BindingResult bindingResult) {
 		// hey spring if there is a validation error : go back to addbook.jsp
 		if (bindingResult.hasErrors()) {
@@ -115,7 +115,7 @@ public class UserController {
 				userservice.updateUser(user.getId(), user);
 			}
 
-			return "redirect:/userdetails";
+			return "redirect:/userdetails.do";
 		}
 	}
 

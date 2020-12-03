@@ -68,21 +68,21 @@ tr:nth-child(even) {
 					<td>${account.panNumber}</td>
 					<td>${account.accountType}</td>
 					<c:if test="${user.userType == 'ADMIN'}">
-						<td><a href="updateaccount?accountId=${account.accountId}">update account</a></td>
-						<td><a href="deleteaccount?accountId=${account.accountId}">delete account</a></td>
+						<td><a href="updateaccount.do?accountId=${account.accountId}">update account</a></td>
+						<td><a href="deleteaccount.do?accountId=${account.accountId}">delete account</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<c:if test="${user.userType == 'ADMIN' || user.userType == 'EMPLOYEE'}">
-		<a href="addaccount">add account</a>
+		<a href="addaccount.do">add account</a>
 	</c:if>
 	<c:if test="${user.userType == 'ADMIN'}">
-		<a href="adduser">add user</a>
-		<a href="updateuser">update user</a>
-		<a href="home">transfer</a>
-		<a href="transactions">transactions</a>
+		<a href="adduser.do">add user</a>
+		<a href="updateuser.do">update user</a>
+		<a href="home.do">transfer</a>
+		<a href="transactions.do">transactions</a>
 	</c:if>
 </body>
 </html>

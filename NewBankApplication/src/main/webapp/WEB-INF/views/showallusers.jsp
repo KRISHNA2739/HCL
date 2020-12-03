@@ -63,14 +63,14 @@ tr:nth-child(even) {
 		</tbody>
 	</table>
 	<c:if test="${user.userType == 'ADMIN' || user.userType == 'EMPLOYEE'}">
-		<a href="addaccount">add account</a>
+		<a href="addaccount.do">add account</a>
 	</c:if>
 	<c:if test="${user.userType == 'ADMIN'}">
-		<a href="adduser">add user</a>
-		<a href="updateuser">update user</a>
-		<a href="home">transfer</a>
-		<a href="transactions">transactions</a>
-		<a href="accountdetails">account details</a>
+		<a href="adduser.do">add user</a>
+		<a href="updateuser.do">update user</a>
+		<a href="home.do">transfer</a>
+		<a href="transactions.do">transactions</a>
+		<a href="accountdetails.do">account details</a>
 	</c:if>
 </body>
 </html>

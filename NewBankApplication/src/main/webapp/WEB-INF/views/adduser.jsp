@@ -14,7 +14,7 @@ font-style: italic;
 </style>
 </head>
 <body>
-<form:form action="adduser" method="post" modelAttribute="user">
+<form:form action="adduser.do" method="post" modelAttribute="user">
 	<form:hidden path="id" value="0"/>
 	<table>
 		<tr>

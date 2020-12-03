@@ -14,7 +14,7 @@ font-style: italic;
 </style>
 </head>
 <body>
-<form:form action="addaccount" method="post" modelAttribute="account">
+<form:form action="addaccount.do" method="post" modelAttribute="account">
 	<form:hidden path="accountId" value="0"/>
 	<table>
 		<tr>
