@@ -2,21 +2,14 @@ package com.bankapp.web.formbeans;
 
 public class TransferBean {
 	
-	private Integer fromAccountId;
+
 	private Integer toAccountId;
 	private Double amount;
 	
 	public TransferBean() {
 	}
 
-	public Integer getFromAccountId() {
-		return fromAccountId;
-	}
-
-	public void setFromAccountId(Integer fromAccountId) {
-		this.fromAccountId = fromAccountId;
-	}
-
+	
 	public Integer getToAccountId() {
 		return toAccountId;
 	}
@@ -33,9 +26,9 @@ public class TransferBean {
 		this.amount = amount;
 	}
 
-	public TransferBean(Integer fromAccountId, Integer toAccountId, Double amount) {
+	public TransferBean( Integer toAccountId, Double amount) {
 		
-		this.fromAccountId = fromAccountId;
+	
 		this.toAccountId = toAccountId;
 		this.amount = amount;
 	}

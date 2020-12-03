@@ -13,7 +13,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExcetionHandler {
 
-	private Logger logger=LoggerFactory.getLogger(GlobalExcetionHandler.class);
+	
 	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ModelAndView handle404() {
@@ -24,9 +24,8 @@ public class GlobalExcetionHandler {
 	
 	@ExceptionHandler(DataAccessException.class)
 	public ModelAndView handleDbErrors(HttpServletRequest req, Exception ex) {
-		System.out.println("*****************************");
-		logger.info(ex.getMessage());
-		logger.info(req.getRequestURI());
+		
+		
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("dberror");
 		return mv;

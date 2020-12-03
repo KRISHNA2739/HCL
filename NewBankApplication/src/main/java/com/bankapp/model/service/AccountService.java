@@ -13,5 +13,6 @@ public interface AccountService {
 	public void deposit(int accountId,double amount);
 	public void withdraw(int accountId,double amount);
 	public void transfer(int fromaccountId,int toaccountId,double amount);
+	public Account getUser(String username, String password);
 
 }

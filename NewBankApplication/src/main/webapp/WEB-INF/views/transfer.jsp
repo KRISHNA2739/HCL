@@ -7,15 +7,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Transfer</title>
+
 </head>
 <body>
 <h3>Welcome</h3>
-	<form:form action="transfer.do" method="post" modelAttribute="transferBean">
+	<form:form action="transfer.do?accountId=${accountuser.accountId}" method="post" modelAttribute="transferBean">
 		<table>
-			<tr>
-				<td>Enter to account number:</td>
-				<td><form:input path="fromAccountId"/> </td>
-			</tr>
+			
 			
 			<tr>
 				<td>Enter to account number:</td>

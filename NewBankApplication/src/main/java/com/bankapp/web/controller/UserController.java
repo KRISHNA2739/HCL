@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bankapp.model.dao.Account;
 import com.bankapp.model.dao.user.User;
 import com.bankapp.model.dao.user.UserType;
 import com.bankapp.model.service.UserService;
@@ -33,13 +34,12 @@ public class UserController {
 
 	@GetMapping("/")
 	public String home() {
-		return "redirect:/loginuser";
+		return "redirect:/mainhome";
 	}
 
 	@GetMapping("loginuser")
 	public String loginuser(ModelMap map) {
-		// we are binding a form bean ( a poj ie used to collect the data from ui) with
-		// the form
+		
 		map.addAttribute("user", new User());
 		return "loginuser";
 	}
@@ -48,7 +48,7 @@ public class UserController {
 	@PostMapping("loginuser")
 	public String userlogin(HttpServletRequest req, @Valid @ModelAttribute(name = "user") User user,
 			BindingResult bindingResult) {
-		// hey spring if there is a validation error : go back to addbook.jsp
+		
 		if (bindingResult.hasErrors()) {
 			return "loginuser";
 		} else {
@@ -62,6 +62,7 @@ public class UserController {
 				return "redirect:/loginuser";
 		}
 	}
+	
 	@GetMapping("userdetails.do")
 	public ModelAndView allusers(HttpServletRequest req,ModelAndView mv) {
 		mv.setViewName("showallusers");

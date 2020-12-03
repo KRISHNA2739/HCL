@@ -83,4 +83,10 @@ public class AccountServiceImpl implements AccountService {
 		transactionentryservice.addTransaction(account1,account," withdraw from "+ fromaccountId+" deposit in "+ toaccountId, amount, TxType.TRANSFER);
 	}
 
+	@Override
+	public Account getUser(String username, String password) {
+		
+		return accountdao.getUser(username, password);
+	}
+
 }

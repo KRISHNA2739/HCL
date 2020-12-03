@@ -34,9 +34,11 @@ public class TransactionEntryDaoImpl implements TransactionEntryDao{
 
 	@Override
 	public List<TransactionEntry> getTransactionsById(int fromaccountId) {
-		Query query = getSession().createQuery("from TransactionEntry where fromaccountId=:accountId");
+		
+		Query query = getSession().createQuery("from TransactionEntry where fromaccountId.accountId=:accountId");
 		query.setParameter("accountId", fromaccountId);
 		List<TransactionEntry> transactionEntries = query.getResultList();
+		
 		return transactionEntries;
 	}
 

@@ -54,7 +54,22 @@ font-style: italic;
 			<td>Select account Type</td>
 			<td><form:select path="accountType" items="${accountTypes}"/></td>
 		</tr>
-		
+		<tr>
+			<td>Enter accountno</td>
+			<td><form:input path="accountno"/><form:errors path="accountno" class="error"/></td>
+		</tr>
+		<tr>
+			<td>Enter username</td>
+			<td><form:input path="username"/><form:errors path="username" class="error"/></td>
+		</tr>
+		<tr>
+			<td>Enter password</td>
+			<td><form:input path="password"/><form:errors path="password" class="error"/></td>
+		</tr>
+		<tr>
+			<td>Select account Status</td>
+			<td><form:select path="accountStatus" items="${accountStatus}"/></td>
+		</tr>
 		<tr>
 			<td><input type="submit"></td>
 		</tr>

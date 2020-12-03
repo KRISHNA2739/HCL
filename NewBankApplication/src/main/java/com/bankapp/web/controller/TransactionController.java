@@ -40,13 +40,14 @@ public class TransactionController {
 		return mvv;
 	}
 	
-	@GetMapping("transaction.do/{id}")
-	public ModelAndView transactionGet(@PathVariable("id") int fromaccountId,HttpServletRequest req,ModelAndView mvv) {
-		mvv.setViewName("transactions");
-		mvv.addObject("transactions", transactionentryservice.getTransactionsById(fromaccountId));
-    	mvv.addObject("user", req.getSession(false).getAttribute("user"));
+	@GetMapping("transaction.do")
+	public ModelAndView transactionGet(HttpServletRequest req,ModelAndView mvv) {
+		int accountId=Integer.parseInt(req.getParameter("accountId"));
+		
+		mvv.setViewName("transaction");
+		mvv.addObject("transactions", transactionentryservice.getTransactionsById(accountId));
 		return mvv;
-	}
+		}
 	
 	
 	

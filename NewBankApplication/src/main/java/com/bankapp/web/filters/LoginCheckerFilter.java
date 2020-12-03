@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bankapp.model.dao.Account;
 import com.bankapp.model.dao.user.User;
 
 
@@ -35,10 +36,13 @@ public class LoginCheckerFilter implements Filter {
 		
 		if(httpSession!=null){
 			User user=(User) httpSession.getAttribute("user");
-			if(user!=null){
+			Account account =(Account)httpSession.getAttribute("accountuser");
+			if(user!=null||account!=null){
 				isValid=true;
 			}
 		}
+		
+		
 		
 		
 		if(isValid){

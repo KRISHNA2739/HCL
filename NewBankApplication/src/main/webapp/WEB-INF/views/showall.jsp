@@ -81,7 +81,7 @@ tr:nth-child(even) {
 	<c:if test="${user.userType == 'ADMIN'}">
 		<a href="adduser.do">add user</a>
 		<a href="updateuser.do">update user</a>
-		<a href="home.do">transfer</a>
+		<a href="deposit.do">deposit</a>
 		<a href="transactions.do">transactions</a>
 	</c:if>
 </body>

@@ -3,6 +3,7 @@ package com.bankapp.web.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bankapp.model.dao.Account;
+import com.bankapp.model.dao.AccountStatus;
 import com.bankapp.model.dao.AccountType;
 import com.bankapp.model.service.AccountService;
+import com.bankapp.web.formbeans.AccountuserBean;
 import com.bankapp.web.formbeans.TransferBean;
 import com.bankapp.web.formbeans.WithdrawBean;
+import com.bankapp.web.formbeans.depositBean;
 
 
 @Controller
@@ -33,11 +37,48 @@ public class AccountController {
 	public AccountController(AccountService accountService) {
 		this.accountService = accountService;
 	}
-	@GetMapping("home.do")
-	public String home() {
-		return "home";
+	
+	@GetMapping("mainhome")
+	public ModelAndView mainhome(HttpServletRequest req,ModelAndView mv) {
+		mv.setViewName("mainhome");
+		return mv;
+	}
+	
+	@GetMapping("loginaccountuser")
+	public String loginaccountuser(ModelMap map) {
+		
+		map.addAttribute("accountuser", new Account());
+		return "loginaccountuser";
 	}
 
+	@PostMapping("loginaccountuser")
+	public String accountuserlogin(HttpServletRequest req, @Valid @ModelAttribute(name = "accountuser") AccountuserBean accountuser,
+			BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+          return "loginaccountuser";
+		} else {
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			
+			if (accountService.getUser(username, password) != null) {
+				HttpSession httpSession = req.getSession(false);
+				httpSession.setAttribute("accountuser", accountService.getUser(username, password));
+			
+            	   return "redirect:/peraccountdetails.do";
+			} else
+				return "redirect:/loginaccountuser";
+		}
+	}
+
+	@GetMapping("peraccountdetails.do")
+	public ModelAndView peraccounts(HttpServletRequest req,ModelAndView mv) {
+		mv.setViewName("showper");
+		Account a=(Account) req.getSession(false).getAttribute("accountuser");
+		int accountId= a.getAccountId();
+    	mv.addObject("accountuser",accountService.getAccountById(accountId));
+		return mv;
+	}
 
 	@GetMapping("accountdetails.do")
 	public ModelAndView allaccounts(HttpServletRequest req,ModelAndView mv) {
@@ -70,12 +111,13 @@ public class AccountController {
 	}
 	
 	@PostMapping("transfer.do") 
-	public String transferPost(@ModelAttribute("transferBean") TransferBean transferBean) {
-		int fromAccountId = transferBean.getFromAccountId();
+	public String transferPost(HttpServletRequest req,@ModelAttribute("transferBean") TransferBean transferBean) {
+		int fromAccountId = Integer.parseInt(req.getParameter("accountId"));
+		System.out.print(fromAccountId);
 		int toAccountId = transferBean.getToAccountId();
 		Double amount = transferBean.getAmount();
 		accountService.transfer(fromAccountId, toAccountId, amount);
-		return "redirect:/accountdetails.do";
+		return "redirect:/peraccountdetails.do";
 	}
 	
 	@GetMapping("withdraw.do")
@@ -85,23 +127,23 @@ public class AccountController {
 	}
 	
 	@PostMapping("withdraw.do") 
-	public String withdrawPost(@ModelAttribute("withdrawBean") WithdrawBean withdrawBean) {
-		int accountId = withdrawBean.getAccountId();
+	public String withdrawPost(HttpServletRequest req,@ModelAttribute("withdrawBean") WithdrawBean withdrawBean) {
+		int accountId = Integer.parseInt(req.getParameter("accountId"));
 		Double amount = withdrawBean.getAmount();
 		accountService.withdraw(accountId, amount);
-		return "redirect:/accountdetails.do";
+		return "redirect:/peraccountdetails.do";
 	}
 	
 	@GetMapping("deposit.do")
 	public String depositGet(ModelMap map) {
-		map.addAttribute("depositBean", new WithdrawBean());
+		map.addAttribute("depositBean", new depositBean());
 		return "deposit";
 	}
 	
 	@PostMapping("deposit.do") 
-	public String depositPost(@ModelAttribute("depositBean") WithdrawBean withdrawBean) {
-		int accountId = withdrawBean.getAccountId();
-		Double amount = withdrawBean.getAmount();
+	public String depositPost(@ModelAttribute("depositBean") depositBean depositBean) {
+		int accountId = depositBean.getAccountId();
+		Double amount = depositBean.getAmount();
 		accountService.deposit(accountId, amount);
 		return "redirect:/accountdetails.do";
 	}
@@ -133,6 +175,11 @@ public class AccountController {
 	public AccountType[] accountType() {
 		
 		return AccountType.values();
+	}
+	@ModelAttribute(value = "accountStatus")
+	public AccountStatus[] accountstatus() {
+		
+		return AccountStatus.values();
 	}
 	@ExceptionHandler(com.bankapp.model.dao.AccountNotFoundException.class)
 	public ModelAndView AccountNotFoundException (Exception ex, HttpServletRequest req) {
