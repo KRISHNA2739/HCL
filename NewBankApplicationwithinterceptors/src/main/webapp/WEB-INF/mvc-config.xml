@@ -36,6 +36,13 @@
 			<bean class="com.bankapp.web.interceptorfilter.LoginCheckerinterceptorFilter"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<mvc:interceptors>
+	<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<bean class="com.bankapp.web.interceptorfilter.cacheinterceptorFilter"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
 
 
