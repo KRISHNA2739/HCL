@@ -52,6 +52,8 @@ tr:nth-child(even) {
 				<th>update</th>
 				<th>delete</th>
 				<th>transactions</th>
+				<th>Account Status</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -73,6 +75,7 @@ tr:nth-child(even) {
 						<td><a href="deleteaccount.do?accountId=${account.accountId}">delete account</a></td>
 						<td><a href="transaction.do?accountId=${account.accountId}">account transactions</a></td>
 					</c:if>
+					<td>${account.accountStatus}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
