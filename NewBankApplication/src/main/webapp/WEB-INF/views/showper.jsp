@@ -44,6 +44,7 @@ tr {
 				<th>birthDate</th>
 				<th>panNumber</th>
 				<th>accountType</th>
+				<th>Account Status</th>
 				
 			</tr>
 		</thead>
@@ -61,6 +62,7 @@ tr {
 							value="${accountuser.birthDate}" /></td>
 					<td>${accountuser.panNumber}</td>
 					<td>${accountuser.accountType}</td>
+					<td>${accountuser.accountStatus}</td>
 					
 				</tr>
 			
