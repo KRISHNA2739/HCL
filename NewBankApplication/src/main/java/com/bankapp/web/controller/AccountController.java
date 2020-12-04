@@ -114,11 +114,15 @@ public class AccountController {
 
 		Account account = (Account) httpSession.getAttribute("accountuser");
 		int fromAccountId = account.getAccountId();
-		System.out.print(fromAccountId);
+		
 		int toAccountId = transferBean.getToAccountId();
 		Double amount = transferBean.getAmount();
+		if(amount>=account.getBalance())
+		{
 		accountService.transfer(fromAccountId, toAccountId, amount);
+		}
 		return "redirect:/peraccountdetails.bo";
+		
 	}
 
 	@GetMapping("withdraw.bo")
@@ -135,7 +139,10 @@ public class AccountController {
 		Account account = (Account) httpSession.getAttribute("accountuser");
 		int accountId = account.getAccountId();
 		Double amount = withdrawBean.getAmount();
-		accountService.withdraw(accountId, amount);
+		if(amount>=account.getBalance())
+		{
+			accountService.withdraw(accountId, amount);		}
+		
 		return "redirect:/peraccountdetails.bo";
 	}
 
@@ -149,7 +156,10 @@ public class AccountController {
 	public String depositPost(@ModelAttribute("depositBean") depositBean depositBean) {
 		int accountId = depositBean.getAccountId();
 		Double amount = depositBean.getAmount();
+		if(amount>=1)
+		{
 		accountService.deposit(accountId, amount);
+		}
 		return "redirect:/accountdetails.do";
 	}
 
