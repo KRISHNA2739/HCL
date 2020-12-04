@@ -11,7 +11,7 @@
 </head>
 <body>
 <h3>Welcome</h3>
-	<form:form action="withdraw.do?accountId=${accountuser.accountId}" method="post" modelAttribute="withdrawBean">
+	<form:form action="withdraw.bo" method="post" modelAttribute="withdrawBean">
 		<table>
 			
 			

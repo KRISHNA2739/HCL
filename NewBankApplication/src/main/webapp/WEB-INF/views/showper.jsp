@@ -69,9 +69,9 @@ tr:nth-child(even) {
 	
 		
 	
-		<a href="transfer.do">transfer</a>
-		<a href="withdraw.do">withdraw</a>
-		<a href="transaction.do?accountId=${accountuser.accountId}">transactions</a>
+		<a href="transfer.bo">transfer</a>
+		<a href="withdraw.bo">withdraw</a>
+		<a href="transactionper.bo">transactions</a>
 	
 </body>
 </html>

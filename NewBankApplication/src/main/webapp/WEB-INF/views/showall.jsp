@@ -51,6 +51,7 @@ tr:nth-child(even) {
 				<th>accountType</th>
 				<th>update</th>
 				<th>delete</th>
+				<th>transactions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -70,6 +71,7 @@ tr:nth-child(even) {
 					<c:if test="${user.userType == 'ADMIN'}">
 						<td><a href="updateaccount.do?accountId=${account.accountId}">update account</a></td>
 						<td><a href="deleteaccount.do?accountId=${account.accountId}">delete account</a></td>
+						<td><a href="transaction.do?accountId=${account.accountId}">account transactions</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
@@ -80,7 +82,7 @@ tr:nth-child(even) {
 	</c:if>
 	<c:if test="${user.userType == 'ADMIN'}">
 		<a href="adduser.do">add user</a>
-		<a href="updateuser.do">update user</a>
+		
 		<a href="deposit.do">deposit</a>
 		<a href="transactions.do">transactions</a>
 	</c:if>

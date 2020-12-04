@@ -11,7 +11,7 @@
 </head>
 <body>
 <h3>Welcome</h3>
-	<form:form action="transfer.do?accountId=${accountuser.accountId}" method="post" modelAttribute="transferBean">
+	<form:form action="transfer.bo" method="post" modelAttribute="transferBean">
 		<table>
 			
 			
