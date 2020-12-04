@@ -79,6 +79,7 @@ tr:nth-child(even) {
 	</table>
 	<c:if test="${user.userType == 'ADMIN' || user.userType == 'EMPLOYEE'}">
 		<a href="addaccount.do">add account</a>
+		
 	</c:if>
 	<c:if test="${user.userType == 'ADMIN'}">
 		<a href="adduser.do">add user</a>

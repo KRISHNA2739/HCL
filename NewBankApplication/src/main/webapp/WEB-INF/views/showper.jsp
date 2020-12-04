@@ -20,8 +20,9 @@ td, th {
 	padding: 8px;
 }
 
-tr:nth-child(even) {
-	background-color: #dddddd;
+tr {
+	background-color: green;
+	
 }
 </style>
 

@@ -77,7 +77,7 @@ public class UserController {
 		if (httpSession != null) {
 			httpSession.invalidate();
 		}
-		return "redirect:/loginuser";
+		return "redirect:/mainhome";
 
 	}
 
